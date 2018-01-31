@@ -2,6 +2,8 @@ package com.jasonfly.helloworld.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,7 @@ import javax.sql.DataSource;
 import java.util.Map;
 
 @Configuration
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactorySecondary",

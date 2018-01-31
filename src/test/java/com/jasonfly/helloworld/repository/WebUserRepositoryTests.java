@@ -1,7 +1,6 @@
 package com.jasonfly.helloworld.repository;
 
 import com.jasonfly.helloworld.domain.WebUser;
-import com.jasonfly.helloworld.repository.WebUserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,9 +26,9 @@ public class WebUserRepositoryTests {
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
         String formattedDate = dateFormat.format(date);
 
-        userRepository.save(new WebUser("aa", "aa123456", "aa@126.com", "aa", formattedDate));
-        userRepository.save(new WebUser("bb", "bb123456", "bb@126.com", "bb", formattedDate));
-        userRepository.save(new WebUser("cc", "cc123456", "cc@126.com", "cc", formattedDate));
+        userRepository.save(new WebUser("aa", "aa123456", "aa@126.com", "aa", formattedDate, 19));
+        userRepository.save(new WebUser("bb", "bb123456", "bb@126.com", "bb", formattedDate, 19));
+        userRepository.save(new WebUser("cc", "cc123456", "cc@126.com", "cc", formattedDate, 19));
 
         Assert.assertEquals(3, userRepository.findAll().size());
         Assert.assertEquals("bb", userRepository.findByUserNameOrEmail("bb", "bb@126.com").getNickName());

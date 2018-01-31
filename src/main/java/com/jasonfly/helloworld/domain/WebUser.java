@@ -1,5 +1,7 @@
 package com.jasonfly.helloworld.domain;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,19 +22,30 @@ public class WebUser  implements Serializable {
     public WebUser() {
     }
 
-    @Column(nullable = false, unique = true)
+//    @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = true, unique = true)
+//    @Column(nullable = true, unique = true)
     private String nickName;
     @Column(nullable = false)
     private String regTime;
 
-    public WebUser(String userName, String passWord, String email, String nickName, String regTime) {
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    private int age;
+
+    public WebUser(String userName, String passWord, String email, String nickName, String regTime, int age) {
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
         this.nickName = nickName;
         this.regTime = regTime;
+        this.age = age;
     }
 
     public long getId() {
@@ -81,6 +94,11 @@ public class WebUser  implements Serializable {
 
     public void setRegTime(String regTime) {
         this.regTime = regTime;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }

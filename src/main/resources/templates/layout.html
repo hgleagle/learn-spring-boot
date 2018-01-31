@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div th:replace="layout/header :: header"></div>
+    <div th:replace="layout/left :: header"></div>
+    <div layout:fragment="content"> content </div>
+    <div th:replace="layout/footer :: header"></div>
+</div>
+
+</body>
+</html>

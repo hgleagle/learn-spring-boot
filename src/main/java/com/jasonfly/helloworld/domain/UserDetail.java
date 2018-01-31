@@ -1,7 +1,5 @@
 package com.jasonfly.helloworld.domain;
 
-import com.sun.javafx.beans.IDProperty;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

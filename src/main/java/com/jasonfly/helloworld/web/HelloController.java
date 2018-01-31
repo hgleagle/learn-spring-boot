@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-    @RequestMapping("/")
+    @RequestMapping("/message")
     public String index(ModelMap map) {
         map.addAttribute("message", "http://jasonfly.me");
         return "hello";

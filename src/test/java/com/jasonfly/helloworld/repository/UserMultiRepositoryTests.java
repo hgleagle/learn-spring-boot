@@ -26,9 +26,9 @@ public class UserMultiRepositoryTests {
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
         String formattedDate = dateFormat.format(date);
 
-        userTest1Repository.save(new WebUser("aa", "aa123456", "aa@126.com", "aa", formattedDate));
-        userTest2Repository.save(new WebUser("bb", "bb123456", "bb@126.com", "bb", formattedDate));
-        userTest2Repository.save(new WebUser("cc", "cc123456", "cc@126.com", "cc", formattedDate));
+        userTest1Repository.save(new WebUser("aa", "aa123456", "aa@126.com", "aa", formattedDate, 20));
+        userTest2Repository.save(new WebUser("bb", "bb123456", "bb@126.com", "bb", formattedDate, 20));
+        userTest2Repository.save(new WebUser("cc", "cc123456", "cc@126.com", "cc", formattedDate, 20));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class UserMultiRepositoryTests {
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
         String formattedDate = dateFormat.format(date);
-        WebUser user = new WebUser("ff", "ff123456", "ff@126.com", "ff", formattedDate);
+        WebUser user = new WebUser("ff", "ff123456", "ff@126.com", "ff", formattedDate, 20);
         userTest1Repository.findAll();
         userTest2Repository.findOne(3l);
         userTest2Repository.save(user);
