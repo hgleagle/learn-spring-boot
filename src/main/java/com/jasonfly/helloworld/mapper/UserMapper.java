@@ -29,6 +29,13 @@ public interface UserMapper {
     })
     UserEntity getOne(Long id);
 
+    @Select("SELECT * FROM users WHERE userName = #{name}")
+    @Results({
+            @Result(property = "userSex", column = "user_sex", javaType = UserSexEnum.class),
+            @Result(property = "nickName", column = "nick_name")
+    })
+    List<UserEntity> getByName(String name);
+
     @Insert("INSERT INTO users(userName, passWord, user_sex) VALUES(#{userName}, #{passWord}, #{userSex})")
     void insert(UserEntity user);
 

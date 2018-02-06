@@ -1,12 +1,14 @@
 package com.jasonfly.helloworld.domain;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable {
     @NotEmpty(message="name should not be empty")
     private String name;
 
@@ -49,5 +51,10 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

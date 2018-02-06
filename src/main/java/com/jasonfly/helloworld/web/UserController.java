@@ -5,6 +5,9 @@ import com.jasonfly.helloworld.mapper.UserMapper;
 import com.jasonfly.helloworld.param.UserParam;
 import com.jasonfly.helloworld.result.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +23,36 @@ public class UserController {
     public List<UserEntity> getUsers() {
         List<UserEntity> users=userMapper.getAll();
         return users;
+    }
+
+    @RequestMapping("/cache/getUsers")
+    @Cacheable(value = "usersCache", key = "#name", condition = "#name.length() >= 6")
+    public List<UserEntity> getUsers(String name) {
+        List<UserEntity> users = userMapper.getByName(name);
+        System.out.println("execute sql");
+        return users;
+    }
+
+    @RequestMapping("/cache/allEntries")
+    @CacheEvict(value = "usersCache", allEntries = true)
+    public List<UserEntity> allEntries(String name) {
+        List<UserEntity> users = userMapper.getByName(name);
+        System.out.println("execute sql");
+        return users;
+    }
+
+    @RequestMapping("/cache/getPutUsers")
+    @CachePut(value = "usersCache", key = "#name")
+    public List<UserEntity> getPutUsers(String name) {
+        List<UserEntity> users = userMapper.getByName(name);
+        System.out.println("execute sql");
+        return users;
+    }
+
+    @RequestMapping("/cache/beforeInvocation")
+    @CacheEvict(value = "usersCache", allEntries = true, beforeInvocation = true)
+    public void beforeInvocation() {
+        throw new RuntimeException("test beforeInvocation");
     }
 
     @RequestMapping("/user/getList")
