@@ -43,6 +43,8 @@ public class SessionController {
                 msg = "login successfull";
             }
         }
+
+        return msg;
     }
 
     @RequestMapping(value = "/index")
