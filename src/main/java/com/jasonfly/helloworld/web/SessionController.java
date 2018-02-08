@@ -33,7 +33,7 @@ public class SessionController {
         return  map;
     }
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/session/login")
     public String login(HttpServletRequest request, String userName, String password) {
         String msg = "logon failure";
         List<UserEntity> users = userMapper.getByName(userName);
@@ -47,7 +47,7 @@ public class SessionController {
         return msg;
     }
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/session/index")
     public String index(HttpServletRequest request) {
         String msg = "index content";
         Object user = request.getSession().getAttribute("user");
